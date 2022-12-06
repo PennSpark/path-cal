@@ -199,6 +199,7 @@ function makeICSCalendar() {
       icsFormat += foldLine(`DTSTART:${events[i].start}`) + '\r\n'
       icsFormat += foldLine(`DTEND:${events[i].end}`) + '\r\n'
       icsFormat += foldLine(`RRULE:${events[i].recurrenceRule}`) + '\r\n'
+      // icsFormat += foldLine(`EXDATE:`) + '\r\n'
       icsFormat += 'END:VEVENT\r\n'
     }
     return icsFormat
