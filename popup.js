@@ -1,3 +1,5 @@
+import './config.js'
+
 const buttonICS = document.querySelector("button.ics-download");
 const buttonGCal = document.querySelector("button.google-upload");
 
@@ -493,7 +495,7 @@ async function uploadGCal() {
             'contentType': 'json'
           };
           fetch(
-            'https://www.googleapis.com/calendar/v3/calendars?key=AIzaSyB0mL8VLX8qRYb2QStBJ4h16-c2iHS2Wec',
+            `https://www.googleapis.com/calendar/v3/calendars?key=${config.apikey}`,
             calendar_init)
             .then((response) => response.json())
             .then(function(data) {
@@ -510,7 +512,7 @@ async function uploadGCal() {
                   'contentType': 'json'
                 };
                 var fetchEvent = function(exponentialBackoff) {
-                  fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=AIzaSyB0mL8VLX8qRYb2QStBJ4h16-c2iHS2Wec`, event_init)
+                  fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${config.apikey}`, event_init)
                   .then((response) => {
                     if (response.status == 403) {
                       setTimeout(() => {
